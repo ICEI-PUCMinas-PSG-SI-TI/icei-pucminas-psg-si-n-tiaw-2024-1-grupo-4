@@ -5,7 +5,7 @@ Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 ## Alunos integrantes da equipe
 
 * Tadeu Gomes Brito
-* Nome completo do aluno 2
+* Maria Fernanda Gabrich
 * Nome completo do aluno 3
 * Nome completo do aluno 4
 * Nome completo do aluno 5
