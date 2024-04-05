@@ -1,6 +1,6 @@
 # Nome do projeto
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+Sistema de gerenciamento de presença da PUC Minas.
 
 ## Alunos integrantes da equipe
 
