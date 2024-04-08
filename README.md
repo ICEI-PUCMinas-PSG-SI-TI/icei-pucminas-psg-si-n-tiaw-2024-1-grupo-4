@@ -13,10 +13,10 @@ Sistema de gerenciamento de presença da PUC Minas.
 ## Professores responsáveis
 
 * Pedro Felipe Alves de Oliveira
-* Nome completo do professor 2
+* Caroline Rhaian da Silva Jandre
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Usaremos o GitHub para distribuir as tarefas e nos orientar para o que deve ser feito.
 
 ## As tarefas da Sprint 1 estão na aba Projetos, apenas escolha uma e atribua o status dela!
