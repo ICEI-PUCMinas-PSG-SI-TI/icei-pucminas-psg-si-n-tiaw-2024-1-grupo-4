@@ -7,7 +7,7 @@ Sistema de gerenciamento de presença da PUC Minas.
 * Tadeu Gomes Brito
 * Maria Fernanda Gabrich
 * Matheus Filipe de Deus Silva
-* Nome completo do aluno 4
+* Gabriel Torres Silva
 * Nome completo do aluno 5
 
 ## Professores responsáveis
