@@ -8,7 +8,7 @@ Sistema de gerenciamento de presença da PUC Minas.
 * Maria Fernanda Gabrich
 * Matheus Filipe de Deus Silva
 * Gabriel Torres Silva
-* Nome completo do aluno 5
+* Gabriel Rodrigues De Castro
 
 ## Professores responsáveis
 
