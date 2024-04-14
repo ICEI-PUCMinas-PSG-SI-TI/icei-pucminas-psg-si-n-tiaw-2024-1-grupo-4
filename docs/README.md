@@ -257,6 +257,10 @@ Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em fo
 
 # Referências Bibliográficas
 
-reunir as referencias
-
+- https://www.pontotel.com.br/controle-de-frequencia-de-funcionarios/
+- https://tangerino.com.br/blog/pmes-precisam-cuidar-do-controle-de-frequencia-dos-funcionarios-entenda/
+- https://www.bizneo.com/blog/pt/controle-de-frequencia/
+- https://www.sydle.com/br/blog/frequencia-escolar-63d7c6a96a38c10ae1ad6f74
+- https://www.totvs.com/blog/instituicao-de-ensino/controle-de-frequencia-escolar/
+- https://edusoft.com.br/controle-de-alunos-o-que-considerar-nesse-controle/
 
