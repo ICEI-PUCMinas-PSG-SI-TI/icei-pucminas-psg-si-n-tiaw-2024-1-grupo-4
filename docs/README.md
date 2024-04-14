@@ -14,118 +14,249 @@ A documentação do projeto inclui as seguintes seções:
 
 O template para o site é estruturado e permite que a equipe evolua a documentação do projeto à medida que avance no desenvolvimento.
 
-# Orientações gerais
+# Introdução
 
-Esta seção traz explicações breves sobre o conjunto de artefatos que precisam ser incluídos na documentação do projeto com uma conjunto de links importantes para que se entenda como criar cada coisa. 
+## Informações Gerais
+
+Projeto: PUC Check (Sistema de Controle de Frequência - PUC Minas)
+Repositório GitHub:
+Membros da Equipe: Maria Fernanda Gabrich, Tadeu, Matheus Filipe, Boris, Gabriel Torres, Gabriel Castro.
+
+# Contexto
 
 ## Problema
 
-Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
+O problema a ser resolvido é a dificuldade no registro e acompanhamento eficiente da presença dos alunos em atividades acadêmicas na Pontifícia Universidade Católica (PUC). Anteriormente, esse processo era realizado de forma manual, o que tornava-o bastante demorado e suscetível a erros. Isso resultava em uma experiência insatisfatória tanto para os alunos quanto para os professores e administradores.
+O registro manual da presença dos alunos pode ser propenso a falhas humanas, como erros de contagem, anotações incorretas e rasuras, que podem levar a informações imprecisas sobre a presença dos alunos. Além disso, o processo manual consome tempo significativo, tanto durante as aulas, quando os professores precisam registrar a presença, quanto depois, quando é necessário consolidar e revisar esses registros.
+Esses problemas impactam negativamente a eficiência operacional da universidade, desperdiçando recursos em tarefas administrativas tediosas e sujeitas a erros. Além disso, a falta de um sistema eficiente de gestão de presença pode prejudicar a transparência e a segurança do processo, uma vez que não há garantia de que a informação seja precisa e acessível quando necessário.
 
-Nesse momento, o grupo pode optar por fazer uso de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-**Links Úteis**:
-
-- [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-- [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-- [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
+O objetivo principal deste projeto visa desenvolver um sistema de gestão de frequência de caráter assertivo, ágil e eficiente que permita aos educadores e administradores universitários monitorarem e gerenciarem a presença dos estudantes da PUC Minas de forma precisa, visando melhorar o acompanhamento acadêmico e a retenção de alunos. 
+Como objetivos específicos que visam aprimorar a funcionalidade do sistema, podemos destacar:
 
-**Links Úteis**:
-
-- [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+- Desenvolver um sistema de autenticação que diferencie os usuários em administradores, professores e alunos;
+- Oferecer uma interface intuitiva de fácil navegação;
+- Fornecer funcionalidades que simplifiquem tanto o registro quanto a consulta de informações relacionadas à frequência dos alunos, a designação de turmas e professores, bem como a capacidade de registrar a presença dos alunos nas aulas diárias. 
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+A justificativa para a criação de um software de gestão de frequência para estudantes universitários é fundamentada na necessidade de otimizar o processo de acompanhamento da presença dos alunos, que é um indicador crítico do engajamento e do sucesso acadêmico. 
+Os objetivos foram propostos pensando na eficiência operacional do produto, oferecendo maior agilidade para executar tais tarefas administrativas e permitir que se concentrem mais no ensino e na interação com os alunos, além de também oferecer aos estudantes uma visualização mais adequada de sua carga horária acadêmica. 
+A correlação entre a frequência dos alunos e seu desempenho acadêmico é destacada pelo estudo do National Center for Education Statistics. Uma frequência regular está diretamente associada a resultados acadêmicos mais positivos, enquanto alunos com baixa frequência enfrentam uma queda significativa em suas notas, além de uma redução no rendimento acadêmico. Essa situação pode eventualmente culminar no abandono dos estudos, fenômeno conhecido como evasão escolar.
+Considerando essa relação, a implementação de um sistema de controle de presença ganha ainda mais importância. Além de monitorar a frequência dos alunos, esse sistema pode ser uma ferramenta valiosa para identificar padrões e tendências no comportamento dos estudantes. Por exemplo, se um aluno começa a faltar muitas aulas consecutivas, isso pode ser um sinal de que ele está enfrentando dificuldades que podem levar à evasão escolar.
+Dessa forma, a implementação de um sistema de controle de presença na Universidade PUC Minas é essencial para garantir o sucesso acadêmico dos alunos e prevenir a evasão escolar. Além de monitorar a frequência dos alunos, o sistema pode identificar padrões de comportamento e oferecer suporte adicional aos estudantes em dificuldades. É crucial que o sistema tenha uma interface amigável para garantir sua acessibilidade a todos os usuários.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-**Links Úteis**:
-
-- [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
+O público-alvo deste projeto consiste em alunos matriculados na Pontifícia Universidade Católica (PUC) Minas, abrangendo estudantes com idades predominantemente entre 18 e 30 anos, correspondendo à faixa etária típica dos estudantes universitários. Esses alunos estão cursando o ensino superior, indicando que já concluíram o ensino médio e estão atualmente buscando uma graduação acadêmica.
+O segmento de atuação deste projeto é o da educação superior, englobando cursos de graduação e, potencialmente, pós-graduação. O sistema de gerenciamento de presença será direcionado aos diversos campus localizados em diferentes regiões, tanto urbanas quanto rurais, onde a PUC Minas possui suas unidades de ensino superior. Portanto, o sistema visa atender alunos em áreas urbanas e rurais, dependendo da localização das instituições de ensino superior da PUC Minas.
+Este público-alvo é caracterizado por sua dedicação aos estudos, sua familiaridade com tecnologias digitais e sua necessidade de um sistema eficiente para acompanhar e registrar sua presença nas atividades acadêmicas. A implementação bem-sucedida do sistema de controle de frequência irá beneficiar diretamente os alunos, professores e administradores da PUC Minas, contribuindo para uma experiência acadêmica mais organizada, transparente e eficaz.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, ou diagramas de personas, mapa de stakeholders, ou como o grupo achar mais conveniente.
 
-**Links Úteis**:
+# Concepção (Design Thinking)
 
-- [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-- [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+## Processo de Design Thinking (Incluindo as personas)
 
-## Personas
+[PROCESSO DE DESIGN THINKING.pdf](https://github.com/ICEI-PUCMinas-PSG-SI-TI/icei-pucminas-psg-si-n-tiaw-2024-1-grupo-4/files/14970897/PROCESSO.DE.DESIGN.THINKING.pdf)
+Link de acesso ao processo de Design Thinking pelo Google Docs: https://docs.google.com/document/d/1ok91xZqOFvnk2UzLeMizLe97OQA1nW8W7bi8KxLMvB0/edit?usp=sharing
 
-Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
-
-**Links Úteis**:
-
-- [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-- [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-- [Rock Content](https://rockcontent.com/blog/personas/)
-- [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
 
 ## Histórias de Usuários
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
+Segue a tabela de histórias de usuários no link a seguir: https://docs.google.com/document/d/1lNVcXrGwN0Etymr37vjaWyEjCXcoNbrAtic3mM2x3Z8/edit?usp=sharing
 
-**Links Úteis**:
 
-- [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-- [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+# Requisitos
 
-## Requisitos
+## Requisitos Funcionais e Não Funcionais
 
-Os requisitos de um projeto são classificados em dois grupos:
+Segue a tabela de Requisitos Funcionais e Não Funcionais no link a seguir: https://docs.google.com/document/d/1J7devjT_dWCHzfZY3NcLtWc39MQDuCvlCc67gGj25fc/edit?usp=sharing
 
-- [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
-  correspondem a uma funcionalidade que deve estar presente na plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade, desempenho, confiabilidade, segurança ou outro (ex: suporte a dispositivos iOS e Android).
+# Projeto de Interfaces
 
-Lembre-se que cada requisito deve corresponder à uma e somente uma característica alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+## User/Screen Flow e Protótipo interativo
+(colocar diagrama de userflow e link protótipo interativo)
 
-**Links Úteis**:
-
-- [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-- [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
-
-## User Flow
-
-Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
-
-**Links Úteis**:
-
-- [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-- [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-- [Top 25 User Flow Tools &amp; Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
 
 ## Wireframes
 
-Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
+( PROTÓTIPO DE TELAS E SUA DESCRIÇÃO)
 
-**Links Úteis**:
+# Metodologia
 
-- [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-- [Figma](https://www.figma.com/)
-- [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-- [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
+A metodologia adotada pelo grupo baseia-se em metodologias ágeis, com o Framework Scrum como base para definir o processo de desenvolvimento. A equipe é composta por um Scrum Master (Tadeu), um Product Owner (Matheus Filipe) e uma equipe de desenvolvimento composta por Maria Fernanda Gabrich (Gerente de Projetos), Boris, Gabriel Castro e Gabriel Torres. 
 
-## Gestão de Projetos
+O trabalho é organizado e distribuído no GitHub, onde a configuração do projeto envolve o uso de tags para marcar versões, merges por meio de pull requests para combinar alterações entre branches, commits para registrar mudanças individuais e branches para desenvolvimento paralelo. A gerência de issues é realizada na aba "Projects", permitindo a organização das tarefas em diferentes colunas para monitorar o progresso do desenvolvimento.
 
- Nesta parte do documento, você deve apresentar  o processo de trabalho baseado nas metodologias ágeis, a divisão de papéis e tarefas, as ferramentas empregadas e como foi realizada a gestão de configuração do projeto via GitHub.
+As tarefas foram divididas em categorias (documentação, desenvolvimento, infraestrutura, testes e gerência de projetos) e são acompanhadas em listas no GitHub, como "To Do" (Backlog do Sprint), "In Progress" e "Done".
 
-Coloque detalhes sobre o processo de Design Thinking e a implementação do Framework Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
+A implementação do Framework Scrum inclui as práticas de reuniões diárias de stand-up, revisão e retrospectiva de sprint, além da divisão do trabalho em sprints para entregas incrementais. O grupo também utiliza ferramentas online, como Google Docs para documentos do projeto, Figma para projeto de interface e wireframes, e GitHub para gerenciamento do projeto e código fonte.
 
-**Links Úteis**:
+## Ferramentas
 
-- [Sobre Projects - GitHub Docs](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
-- [Gestão de projetos com GitHub | balta.io](https://balta.io/blog/gestao-de-projetos-com-github)
-- [(460) GitHub Projects - YouTube](https://www.youtube.com/playlist?list=PLiO7XHcmTsldZR93nkTFmmWbCEVF_8F5H)
-- [11 Passos Essenciais para Implantar Scrum no seu Projeto](https://mindmaster.com.br/scrum-11-passos/)
-- [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+Segue a tabela de Ferramentas utilizadas no link a seguir: https://docs.google.com/document/d/1Q8GkCmx3Wyj1KrLRON5BfWbBbmywlz71JusHB8LCg40/edit?usp=sharing
+
+## Gestão do Projeto
+
+A equipe adota metodologias ágeis, com o Scrum como base para definir o processo de desenvolvimento.
+A equipe está organizada da seguinte maneira:
+● Scrum Master: Tadeu
+● Product Owner: Matheus Filipe
+● Equipe de Desenvolvimento:
+○ Maria Fernanda Gabrich (Gerente de Projetos) e também responsável pela documentação do projeto.
+○ Boris (Desenvolvedor Front End)
+○ Gabriel Castro (Desenvolvedor Front End)
+○ Gabriel Torres (Desenvolvedor Front End)
+A equipe está usando o GitHub para organizar e distribuir as tarefas do projeto, com a seguinte estrutura de listas:
+● To Do: Essa lista é o Backlog do Sprint, correspondendo ao Sprint atual em andamento.
+● In Progress: Quando uma tarefa é iniciada, ela é transferida para esta lista.
+● Done: Nesta lista são inseridas as tarefas que passaram nos testes e no controle de qualidade, estando prontas para serem entregues ao usuário. Não há mais necessidade de edições ou revisões; elas estão agendadas e prontas para serem implementadas.
+O quadro Kanban do grupo no GitHub está disponível através da URL https://github.com/orgs/ICEI-PUCMinas-PSG-SI-TI/projects/29
+
+[KANBAN.pdf](https://github.com/ICEI-PUCMinas-PSG-SI-TI/icei-pucminas-psg-si-n-tiaw-2024-1-grupo-4/files/14970966/KANBAN.pdf)
+
+As tarefas foram divididas conforme o que será avaliado, contendo apenas a instrução da tarefa e a atribuição aos participantes do grupo. As categorias, documentação, desenvolvimento, infraestrutura, testes e gerência de projetos, foram escolhidas pelos membros no início do trabalho.
+
+## Controle de Versão
+
+No GitHub, a configuração do projeto envolve o uso de tags para marcar versões, merges por meio de pull requests para combinar alterações entre branches, commits para registrar mudanças individuais e branches para desenvolvimento paralelo. Além disso, a gerência de issues é feita na aba "Projects", permitindo a organização das tarefas em diferentes colunas para monitorar o progresso do desenvolvimento. Isso mantém o processo organizado e transparente para a equipe.
+
+
+# Solução
+
+
+1. Registro de Presença Automatizado
+
+Funcionalidade:
+- Permite aos usuários registrar sua presença automaticamente ao entrar em uma sala de aula ou evento acadêmico, utilizando tecnologias como RFID, reconhecimento facial ou QR Code.
+
+Estrutura de Dados Associada:
+- Banco de dados de usuários e salas de aula/eventos.
+- Registros de presença.
+
+Instruções de Acesso e Uso:
+- Os usuários devem fazer login na plataforma usando suas credenciais de estudante ou funcionário.
+- Ao entrar em uma sala de aula ou evento, o sistema reconhecerá automaticamente o usuário e registrará sua presença.
+
+2. Visualização de Presença e Histórico
+
+Funcionalidade:
+- Permite aos usuários visualizar seu registro de presença atual e histórico completo de participação em aulas e eventos.
+
+Estrutura de Dados Associada:
+- Banco de dados de usuários e registros de presença.
+
+Instruções de Acesso e Uso:
+- Os usuários podem acessar sua visualização de presença após fazer login na plataforma.
+- O histórico completo de participação em aulas e eventos estará disponível para consulta.
+
+3. Acompanhamento de Presença em Tempo Real
+
+Funcionalidade:
+- Permite aos administradores acompanhar a presença dos alunos em tempo real durante as aulas e eventos, facilitando a identificação de ausências ou irregularidades.
+
+Estrutura de Dados Associada:
+- Banco de dados de salas de aula/eventos e registros de presença.
+
+Instruções de Acesso e Uso:
+- Os administradores podem acessar o painel de acompanhamento de presença após fazer login na plataforma.
+- O sistema exibirá a lista de alunos presentes e ausentes em tempo real durante as aulas e eventos.
+
+4. Notificações de Ausência
+
+Funcionalidade:
+- Envia notificações automáticas aos usuários e administradores em caso de ausência não registrada em aulas ou eventos agendados.
+
+Estrutura de Dados Associada:
+- Banco de dados de usuários, salas de aula/eventos e registros de presença.
+
+Instruções de Acesso e Uso:
+- Os usuários receberão notificações via e-mail, SMS ou notificação push no aplicativo em caso de ausência não registrada.
+- Os administradores também serão notificados sobre ausências não registradas para que possam tomar as medidas necessárias.
+
+5. Relatórios de Presença e Estatísticas
+
+Funcionalidade:
+- Permite aos administradores gerar relatórios detalhados de presença e estatísticas de participação em aulas e eventos ao longo do tempo.
+
+Estrutura de Dados Associada:
+- Banco de dados de usuários, salas de aula/eventos e registros de presença.
+
+Instruções de Acesso e Uso:
+- Os administradores podem acessar a seção de relatórios após fazer login na plataforma.
+- Os relatórios podem ser personalizados de acordo com as necessidades específicas do usuário, como período de tempo, tipo de evento, etc.
+
+6. Gerenciamento de Exceções e Justificativas de Ausência
+
+Funcionalidade:
+- Permite aos usuários enviar justificativas de ausência em caso de eventos especiais ou circunstâncias excepcionais que impedem sua participação em aulas ou eventos agendados.
+
+Estrutura de Dados Associada:
+- Banco de dados de usuários, salas de aula/eventos e registros de presença.
+
+Instruções de Acesso e Uso:
+- Os usuários podem acessar a seção de justificativas de ausência após fazer login na plataforma.
+- Eles podem fornecer detalhes sobre a razão de sua ausência e enviar a justificativa para revisão pelos administradores.
+
+
+## Vídeo do Projeto
+
+O video de apresentação é voltado para que o público externo possa conhecer a solução. O formato é livre, sendo importante que seja apresentado o problema e a solução numa linguagem descomplicada e direta.
+
+Utilize o recurso de compartilhamento via embed e inclua o vídeo logo abaixo.
+
+
+## Funcionalidades
+
+
+(Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
+
+Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.)
+
+
+## Estruturas de Dados
+
+(Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
+
+Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.)
+
+
+## Módulos e API'S
+
+
+(Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.)
+
+
+# FAQ
+
+
+1. *Como faço para acessar o sistema de controle de presença?*
+   - R: Você pode acessar o sistema através de uma plataforma online usando suas credenciais de estudante ou funcionário da universidade.
+
+2. *É necessário instalar algum software para utilizar o sistema?*
+   - R: Não, o sistema é acessado diretamente através de um navegador web, não requerendo instalação de software adicional.
+
+3. *Como faço para configurar minha conta no sistema?*
+   - R: Sua conta será automaticamente configurada com base em suas informações de registro na universidade. Basta fazer login com suas credenciais fornecidas pela instituição.
+
+4. *É possível utilizar o sistema em dispositivos móveis?*
+   - R: Sim, o sistema é compatível com dispositivos móveis, permitindo o acesso através de smartphones e tablets.
+
+5. *Quem é responsável pela manutenção e suporte técnico do sistema?*
+   - R: A equipe de desenvolvimento do sistema é responsável pela manutenção e suporte técnico, garantindo que o sistema esteja sempre funcionando corretamente e respondendo às dúvidas dos usuários.
+
+6. *O sistema pode ser integrado com outros sistemas da universidade?*
+   - R: Sim, o sistema é projetado para ser facilmente integrado com outros sistemas existentes na universidade, garantindo uma experiência de usuário integrada e fluida.
+
+7. *Quais medidas de segurança são implementadas no sistema para proteger os dados dos usuários?*
+   - R: O sistema utiliza técnicas avançadas de criptografia para proteger os dados dos usuários durante a transmissão e armazenamento. Além disso, são implementados protocolos de autenticação e autorização para garantir que apenas usuários autorizados tenham acesso aos dados sensíveis.
+
+
+# Referências Bibliográficas
+
+reunir as referencias
+
+
