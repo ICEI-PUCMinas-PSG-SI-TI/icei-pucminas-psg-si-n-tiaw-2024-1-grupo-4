@@ -1,6 +1,6 @@
 # Nome do projeto
 
-Sistema de gerenciamento de presença da PUC Minas.
+Puc Check
 
 ## Alunos integrantes da equipe
 
