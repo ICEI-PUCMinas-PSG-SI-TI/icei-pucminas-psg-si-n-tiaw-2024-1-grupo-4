@@ -1,0 +1,33 @@
+{
+  "administrador": {
+    "matricula": "ADM001",
+    "senha": "adm123"
+  },
+  "disciplinas": [
+    {
+      "id": "D001",
+      "nome": "Matemática",
+      "horario": "Segunda 08:00-10:00"
+    },
+    {
+      "id": "D002",
+      "nome": "Português",
+      "horario": "Terça 10:00-12:00"
+    },
+    {
+      "id": "D003",
+      "nome": "História",
+      "horario": "Quarta 14:00-16:00"
+    },
+    {
+      "id": "D004",
+      "nome": "Ciências",
+      "horario": "Quinta 08:00-10:00"
+    },
+    {
+      "id": "D005",
+      "nome": "Geografia",
+      "horario": "Sexta 13:00-15:00"
+    }
+  ]
+}
