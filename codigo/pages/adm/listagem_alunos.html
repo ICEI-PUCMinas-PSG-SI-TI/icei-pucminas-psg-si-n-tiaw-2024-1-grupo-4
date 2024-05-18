@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body onload="listaProfessores()">
+<body onload="listaAlunos()">
     <header>
         <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container">
@@ -54,39 +54,46 @@
         </nav>
     </header>
     <div class="container mt-4">
-        <h2 class="h2 text-center p-5">Listagem de Alunos</h2>
-
-        <table class="table" id="grid-professores">
+        <h2 class="text-center p-3">Listagem de Alunos</h2>
+    
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addAlunoModal">Adicionar
+            Aluno</button>
+        <table class="table" id="grid-alunos">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Matrícula</th>
+                    <th>Senha</th>
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody id="table-professores">
-
+            <tbody id="table-alunos">
+    
             </tbody>
         </table>
     </div>
-
-    <div class="modal fade" id="addProfessorModal" tabindex="-1" aria-labelledby="addProfessorModalLabel"
+    
+    <div class="modal fade" id="addAlunoModal" tabindex="-1" aria-labelledby="addAlunoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addProfessorModalLabel">Adicionar Professor</h5>
+                    <h5 class="modal-title" id="addAlunoModalLabel">Adicionar Aluno</h5>
                 </div>
-                <form id="form-add-professor" onsubmit="createProfessor()">
+                <form id="form-add-aluno" onsubmit="createAluno()">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nome-professor">Nome:</label>
-                            <input type="text" class="form-control" id="nome-professor" required>
+                            <label for="nome-aluno">Nome:</label>
+                            <input type="text" class="form-control" id="nome-aluno" required>
                         </div>
                         <div class="form-group">
-                            <label for="matricula-professor">Matrícula:</label>
-                            <input type="text" class="form-control" id="matricula-professor" required>
+                            <label for="matricula-aluno">Matrícula:</label>
+                            <input type="text" class="form-control" id="matricula-aluno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha-aluno">Senha:</label>
+                            <input type="password" class="form-control" id="senha-aluno" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -96,27 +103,31 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="editProfessorModal" tabindex="-1" aria-labelledby="editProfessorModalLabel"
+    
+    <div class="modal fade" id="editAlunoModal" tabindex="-1" aria-labelledby="editAlunoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editProfessorModalLabel">Editar Professor</h5>
+                    <h5 class="modal-title" id="editAlunoModalLabel">Editar Aluno</h5>
                 </div>
-                <form id="form-edit-professor" onsubmit="updateProfessor()">
+                <form id="form-edit-aluno" onsubmit="updateAluno()">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="edit-id-professor">ID:</label>
-                            <input type="text" class="form-control" id="edit-id-professor" required readonly>
+                            <label for="edit-id-aluno">ID:</label>
+                            <input type="text" class="form-control" id="edit-id-aluno" required readonly>
                         </div>
                         <div class="form-group">
-                            <label for="edit-nome-professor">Nome:</label>
-                            <input type="text" class="form-control" id="edit-nome-professor" required>
+                            <label for="edit-nome-aluno">Nome:</label>
+                            <input type="text" class="form-control" id="edit-nome-aluno" required>
                         </div>
                         <div class="form-group">
-                            <label for="edit-matricula-professor">Matrícula:</label>
-                            <input type="text" class="form-control" id="edit-matricula-professor" required>
+                            <label for="edit-matricula-aluno">Matrícula:</label>
+                            <input type="text" class="form-control" id="edit-matricula-aluno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-senha-aluno">Senha:</label>
+                            <input type="password" class="form-control" id="edit-senha-aluno" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -126,8 +137,9 @@
             </div>
         </div>
     </div>
+    
 
-    <footer class="bg-primary fixed-bottom">
+    <footer class="bg-primary fixed-bottom sticky-bottom p-1">
         <div class="container">
             <p class="text-center mt-3 text-light">© 2024 Company, Inc, By Puc Chek</p>
         </div>
