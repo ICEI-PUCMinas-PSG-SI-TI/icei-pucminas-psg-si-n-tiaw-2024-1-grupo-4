@@ -1,62 +1,30 @@
 // Arquivo: disciplinas.js
 
-let db_disciplinas = []; // Array para armazenar as disciplinas carregadas do JSON
+if (!usuarioCorrente.matricula) {
+    window.location ='../../index.html';
+}
+
+let db_disciplinas = {}; // Array para armazenar as disciplinas carregadas do JSON
 
 function init() {
-    // Carregar dados de disciplinas do arquivo JSON usando fetch
-    fetch('../db/disciplinas.json')
-        .then(response => response.json())
-        .then(data => {
-            db_disciplinas = data.disciplinas;
-            listarDisciplinas(); // Após carregar os dados, listar as disciplinas na tabela
-        })
-        .catch(error => {
-            console.error('Erro ao carregar disciplinas:', error);
-            alert('Erro ao carregar dados de disciplinas. Por favor, tente novamente mais tarde.');
-        });
+    let disciplinasJSON = localStorage.getItem('db_disciplinas');
 
-    // Carregar códigos de disciplinas para o dropdown de códigos de disciplinas
-    fetch('../db/codigo_disciplinas.json')
-        .then(response => response.json())
-        .then(data => {
-            const selectCodigoDisciplina = document.getElementById('codigo-disciplina');
+    // Verifica se existem dados já armazenados no localStorage
+    if (!disciplinasJSON) {  // Se NÃO há dados no localStorage
+        
+        // Informa sobre localStorage vazio e e que serão carregados os dados iniciais
+        alert('Dados de disciplinas não encontrados no localStorage. \n -----> Fazendo carga inicial.');
 
-            // Limpar o dropdown antes de adicionar novas opções
-            selectCodigoDisciplina.innerHTML = '';
+        // Copia os dados iniciais para o banco de dados 
+        db_disciplinas = dadosIniciaisDisciplinas;
 
-            // Preencher o dropdown com os códigos de disciplinas disponíveis
-            data.codigos_disciplinas.forEach(disciplina => {
-                const option = document.createElement('option');
-                option.value = disciplina.codigo;
-                option.text = `${disciplina.codigo} - ${disciplina.nome}`;
-                selectCodigoDisciplina.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao carregar códigos de disciplinas:', error);
-            alert('Erro ao carregar dados de códigos de disciplinas. Por favor, tente novamente mais tarde.');
-        });
-
-    // Carregar dados de professores para o dropdown de professores
-    const selectProfessorDisciplina = document.getElementById('professor-disciplina');
-    selectProfessorDisciplina.innerHTML = ''; // Limpar o dropdown antes de adicionar novas opções
-
-    // Carregar dados de professores do arquivo JSON
-    fetch('../db/professores.json')
-        .then(response => response.json())
-        .then(data => {
-            // Preencher o dropdown com os dados dos professores disponíveis
-            data.professores.forEach(professor => {
-                const option = document.createElement('option');
-                option.value = professor.id;
-                option.text = professor.nome;
-                selectProfessorDisciplina.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao carregar dados de professores:', error);
-            alert('Erro ao carregar dados de professores. Por favor, tente novamente mais tarde.');
-        });
+        // Salva os dados iniciais no local Storage convertendo-os para string antes
+        localStorage.setItem('db_disciplinas', JSON.stringify(dadosIniciaisDisciplinas));
+    }
+    else  {  // Se há dados no localStorage
+        // Converte a string JSON em objeto colocando no banco de dados baseado em JSON
+        db_disciplinas = JSON.parse(disciplinasJSON);
+    }
 }
 
 function listarDisciplinas() {
@@ -64,14 +32,13 @@ function listarDisciplinas() {
     tableDisciplinas.innerHTML = ""; // Limpa a tabela antes de atualizar
 
     // Iterar sobre as disciplinas carregadas e adicionar linhas na tabela
-    db_disciplinas.forEach(disciplina => {
+    db_disciplinas.disciplinas.forEach(disciplina => {
         tableDisciplinas.innerHTML += `<tr>
             <td>${disciplina.id}</td>
             <td>${disciplina.codigo}</td>
             <td>${disciplina.nome}</td>
-            <td>${disciplina.professor}</td>
             <td>
-                <button class="btn btn-primary btn-sm" onclick="editarDisciplina(${disciplina.id})">Editar</button>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editDisciplinaModal" onclick="carregaDados(${disciplina.id})">Editar</button>
                 <button class="btn btn-danger btn-sm" onclick="excluirDisciplina(${disciplina.id})">Excluir</button>
             </td>
         </tr>`;
@@ -80,61 +47,64 @@ function listarDisciplinas() {
 
 function adicionarDisciplina() {
     let codigo = document.getElementById('codigo-disciplina').value;
-    let nome = document.querySelector('#codigo-disciplina option:checked').text.split(' - ')[1]; // Obter o nome da disciplina pelo código selecionado
-    let professorId = document.getElementById('professor-disciplina').value;
-    let professorNome = document.getElementById('professor-disciplina').options[document.getElementById('professor-disciplina').selectedIndex].text;
+    let nome = document.getElementById('nome-disciplina').value;
 
-    let proximoId = db_disciplinas.length > 0 ? db_disciplinas[db_disciplinas.length - 1].id + 1 : 1;
+    let proximoId = db_disciplinas.disciplinas.length > 0 ? db_disciplinas.disciplinas[db_disciplinas.disciplinas.length - 1].id + 1 : 1;
 
     let disciplina = {
         id: proximoId,
         codigo: codigo,
-        nome: nome,
-        professor: professorNome
+        nome: nome
     };
 
-    db_disciplinas.push(disciplina); // Adicionar nova disciplina ao array
-    salvarDisciplinasNoArquivo(); // Salvar disciplinas no arquivo JSON
-    listarDisciplinas(); // Atualizar a tabela de disciplinas na interface
+    db_disciplinas.disciplinas.push(disciplina); // Adicionar nova disciplina ao array
+    
+    localStorage.setItem('db_disciplinas', JSON.stringify(db_disciplinas));
 
-    // Limpar os campos do formulário após adicionar a disciplina
-    document.getElementById('codigo-disciplina').value = '';
-    document.getElementById('professor-disciplina').selectedIndex = 0; // Resetar para a primeira opção
+    window.location.reload();
+}
 
-    // Fechar o modal após adicionar a disciplina
-    let modalElement = document.getElementById('addDisciplinaModal');
-    let modal = bootstrap.Modal.getInstance(modalElement);
-    modal.hide();
+function carregaDados(id){
+    
+    //Preenchimento dos dados nos campos no modal de edição
+    for (let i = 0; i < db_disciplinas.disciplinas.length; i++) {
+        if (db_disciplinas.disciplinas[i].id === id){
+            document.getElementById('edit-id-disciplina').value = db_disciplinas.disciplinas[i].id;
+            document.getElementById('edit-codigo-disciplina').value = db_disciplinas.disciplinas[i].codigo;
+            document.getElementById('edit-nome-disciplina').value = db_disciplinas.disciplinas[i].nome;
+        }
+    }
+}
+
+function editarDisciplina(){
+
+    // Obtem os valores dos campos do formulário
+    let id = document.getElementById('edit-id-disciplina').value;
+    let codigo = document.getElementById('edit-codigo-disciplina').value;
+    let nome = document.getElementById('edit-nome-disciplina').value;
+
+    //Encontra a disciplina e a atualiza
+    for (let i = 0; i < db_disciplinas.disciplinas.length; i++) {
+        if (db_disciplinas.disciplinas[i].id == id){
+            db_disciplinas.disciplinas[i].codigo = codigo;
+            db_disciplinas.disciplinas[i].nome = nome;
+        }
+    }
+    
+    //Atualiza o localStorage
+    localStorage.setItem('db_disciplinas', JSON.stringify(db_disciplinas));
+
+    //Força o recarregamento da página para exibir a tabela atualizada
+    window.location.reload();
 }
 
 function excluirDisciplina(id) {
     if (confirm('Tem certeza que deseja excluir esta disciplina?')) {
-        db_disciplinas = db_disciplinas.filter(d => d.id !== id); // Remover disciplina do array
-        salvarDisciplinasNoArquivo(); // Salvar alterações no arquivo JSON
-        listarDisciplinas(); // Atualizar a tabela de disciplinas na interface
+        db_disciplinas.disciplinas = db_disciplinas.disciplinas.filter(d => d.id !== id); // Remover disciplina do array
+        localStorage.setItem('db_disciplinas', JSON.stringify(db_disciplinas));
     }
-}
 
-function salvarDisciplinasNoArquivo() {
-    // Salvar dados de disciplinas de volta para o arquivo JSON
-    fetch('../db/disciplinas.json', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ disciplinas: db_disciplinas })
-    })
-    .catch(error => {
-        console.error('Erro ao salvar disciplinas:', error);
-        alert('Erro ao salvar dados de disciplinas. Por favor, tente novamente mais tarde.');
-    });
-}
-
-// Função para preencher automaticamente o nome da disciplina ao selecionar um código
-function preencherNomeDisciplina() {
-    let codigoSelecionado = document.getElementById('codigo-disciplina').value;
-    let nomeDisciplina = document.querySelector(`#codigo-disciplina option[value="${codigoSelecionado}"]`).text.split(' - ')[1];
-    document.getElementById('nome-disciplina').value = nomeDisciplina;
+    window.location.reload();
 }
 
 // Chamada da função init() para inicializar o carregamento dos dados ao carregar a página

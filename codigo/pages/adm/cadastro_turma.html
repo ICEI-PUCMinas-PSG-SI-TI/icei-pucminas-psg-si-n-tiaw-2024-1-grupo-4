@@ -9,6 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="../../assets/js/index.js"></script>
 </head>
 
 <body>
@@ -26,8 +27,13 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active text-light" aria-current="page"
-                                href="cadastro_disciplina.html">Cadastro de Disciplina</a>
+                            <a class="nav-link active text-light" href="listagem_alunos.html">Lista Alunos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" href="listagem_professores.html">Lista Professor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" href="listagem_disciplinas.html">Cadastro de Disciplina</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active text-light" aria-current="page"
@@ -37,16 +43,7 @@
                             <a class="nav-link active text-light" href="cadastro_aulas.html">Cadastro de Aula</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-light" href="listagem_alunos.html">Lista Alunos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-light" href="listagem_professores.html">Lista Professor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-light" href="listagem_disciplinas.html">Disciplina</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-light" href="#">Sair <i
+                            <a class="nav-link active text-light" href="#" onclick="logoutUser()">Sair <i
                                     class="bi bi-box-arrow-right"></i></a>
                         </li>
                     </ul>

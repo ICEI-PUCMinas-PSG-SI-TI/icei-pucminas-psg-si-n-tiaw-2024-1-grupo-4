@@ -6,27 +6,8 @@
 // Autor: Gabriel Torres Silva
 // Data: 10/05/2024
 
-let db_professores = {};
-
-function init() {
-    let professoresJSON = localStorage.getItem('db_professores');
-
-    // Verifica se existem dados já armazenados no localStorage
-    if (!professoresJSON) {  // Se NÃO há dados no localStorage
-        
-        // Informa sobre localStorage vazio e e que serão carregados os dados iniciais
-        alert('Dados de professores não encontrados no localStorage. \n -----> Fazendo carga inicial.');
-
-        // Copia os dados iniciais para o banco de dados 
-        db_professores = dadosIniciaisProfessores;
-
-        // Salva os dados iniciais no local Storage convertendo-os para string antes
-        localStorage.setItem('db_professores', JSON.stringify(dadosIniciaisProfessores));
-    }
-    else  {  // Se há dados no localStorage
-        // Converte a string JSON em objeto colocando no banco de dados baseado em JSON
-        db_professores = JSON.parse(professoresJSON);
-    }
+if (!usuarioCorrente.matricula) {
+    window.location ='../../index.html';
 }
 
 function listaProfessores() {
@@ -39,7 +20,7 @@ function listaProfessores() {
         tableProfessores.innerHTML += `<tr><td>${professor.id}</td>
                                         <td>${professor.nome}</td>
                                         <td>${professor.matricula}</td>
-                                        <td>${professor.senha}</td>
+                                        <td>******</td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editProfessorModal" onclick="carregaDados(${professor.id})">Editar</button>
                                             <button class="btn btn-danger btn-sm" onclick="deleteProfessor(${professor.id})">Excluir</button>
@@ -138,5 +119,3 @@ function deleteProfessor(id){
     //Força o recarregamento da página para exibir a tabela atualizada
     window.location.reload();
 }
-
-init();
