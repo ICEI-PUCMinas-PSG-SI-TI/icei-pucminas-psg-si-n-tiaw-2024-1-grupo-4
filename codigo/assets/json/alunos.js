@@ -1,4 +1,4 @@
-{
+const dadosIniciaisAlunos = {
   "alunos": [
     {
       "nome": "João Silva",

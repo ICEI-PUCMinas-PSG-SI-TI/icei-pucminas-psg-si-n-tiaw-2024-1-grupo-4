@@ -22,24 +22,31 @@
         <div class="right-section">
             <div class="login-form">
                 <h2>Conecte-se!</h2>
-                <form action="#" method="post">
+                <form id="login-usuario" class="form" method="post">
                     <div class="form-group">
-                        <input type="email" id="Email" name="Senha" placeholder="Matricula" required>
+                        <input id="matricula" placeholder="Matricula" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="Senha" name="Senha" placeholder="Senha" required>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Perfil</option>
+                        <input type="password" id="senha" placeholder="Senha" required>
+                        <select class="form-select" id="perfil" required>
+                            <option>-= Perfil =-</option>
                             <option value="1">Administração</option>
                             <option value="2">Professor</option>
                             <option value="3">Alunos</option>
                         </select>
                     </div>
-                    <button type="submit">Entrar</button>
+                    <button type="submit" value="submit">Entrar</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script src="assets/json/adm.js"></script>
+    <script src="assets/json/alunos.js"></script>
+    <script src="assets/json/professores.js"></script>
+    <script src="assets/js/index.js">
+        document.getElementById ('login-usuario').addEventListener('submit', loginUser);
+    </script>
 </body>
 
 </html>
