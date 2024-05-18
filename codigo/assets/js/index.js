@@ -5,9 +5,6 @@
 // Autor: Gabriel Torres Silva
 // Data: 17/05/2024
 
-
-const LOGIN_URL = "login.html";
-
 let db_admins = {};
 let db_alunos = {};
 let db_professores = {};
@@ -15,11 +12,6 @@ let db_professores = {};
 let usuarioCorrente = {};
 
 function initLoginApp() {
-
-    usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
-    if (usuarioCorrenteJSON) {
-        usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
-    }
     
     let adminsJSON = localStorage.getItem('db_admins');
     let alunosJSON = localStorage.getItem('db_alunos');
@@ -51,15 +43,37 @@ function initLoginApp() {
     else  {
         db_professores = JSON.parse(professoresJSON);    
     }
+
+    //Usuario logado
+    let usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+    if (usuarioCorrenteJSON) {
+        usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
+    }
 };
+
+function redirectIfLogged(){
+    let usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+    if (usuarioCorrenteJSON) {
+        usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
+
+        if(usuarioCorrente.matricula !== undefined && usuarioCorrente.nome !== undefined){
+            window.location = '../codigo/pages/adm/cadastro_pessoas.html';
+        }
+    }
+}
 
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
 function loginUser(event) {
     event.preventDefault();
-    
+
     let matricula = document.getElementById('matricula').value;
     let senha = document.getElementById('senha').value;
     let perfil = document.getElementById('perfil').value;
+    
+    if(perfil == "0") {
+        alert("Selecione o PERFIL")
+        return false;
+    }
 
     if(perfil == "1") {
         for (let i = 0; i < db_admins.admins.length; i++) {
@@ -72,20 +86,20 @@ function loginUser(event) {
                 // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
                 sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
                 
-                window.location.href = '../../cadastro_pessoas.html';
+                window.location.href = '../codigo/pages/adm/cadastro_pessoas.html';
                 return true;
             }
         }
     }
-
-    alert("Usuário ou senha inválidos")
+ 
+    alert("Usuário ou senha inválidos");
 }
 
 // Apaga os dados do usuário corrente no sessionStorage
 function logoutUser () {
     usuarioCorrente = {};
-    sessionStorage.setItem ('usuarioCorrente', JSON.stringify(usuarioCorrente));
-    window.location = LOGIN_URL;
+    sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+    window.location = '../../index.html';
 }
 
 // Inicializa as estruturas utilizadas pelo LoginApp
