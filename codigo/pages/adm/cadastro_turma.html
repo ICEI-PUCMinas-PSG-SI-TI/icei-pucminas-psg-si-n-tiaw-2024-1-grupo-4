@@ -55,63 +55,60 @@
         <div class="row">
             <p class="text-center h2 p-5">Cadastro de Turma</p>
             <div class="col-3">
-                <select class="form-select col-3 rounded border-dark m-1 p-2" aria-label="Default select example">
-                    <option selected>Codigo da materia</option>
-                    <option value="1">COMP101</option>
-                    <option value="2">COMP201</option>
-                    <option value="3">COMP301</option>
-                    <option value="4">MATH101</option>
+                <select class="form-select col-3 rounded border-dark m-1 p-2" id="select-turma" onchange="selecionaTurma()">
+                    <option value="0" selected>Nova turma</option>
                 </select>
             </div>
             <div class="col-3">
-                <select class="form-select col-3 rounded border-dark m-1 p-2" aria-label="Default select example">
-                    <option selected>Codigo da materia</option>
-                    <option value="1">COMP101</option>
-                    <option value="2">COMP201</option>
-                    <option value="3">COMP301</option>
-                    <option value="4">MATH101</option>
+                <select class="form-select col-3 rounded border-dark m-1 p-2" id="select-disciplina">
+                    <option value="0" selected>-= Disciplina =-</option>
                 </select>
             </div>
             <div class="col-3">
-                <select class="form-select col-3 rounded border-dark m-1 p-2" aria-label="Default select example">
-                    <option selected>Professor</option>
-                    <option value="1">Dr. João Silva</option> <!-- Ficaria value="COMP101" sera? -->
-                    <option value="2">Dra. Maria Santos</option>
-                    <option value="3">Dr. Pedro Almeida</option>
-                    <option value="3">Prof. Ana Oliveira</option>
+                <select class="form-select col-3 rounded border-dark m-1 p-2" id="select-professor">
+                    <option value="0" selected>-= Professor =-</option>
                 </select>
             </div>
             <div class="col-3">
-                <div class="input-group rounded border border-dark mt-1">
-                    <label for="data" class="input-group-text" id="basic-addon1">Data:</label>
-                    <input type="date" id="data" name="data" class="form-control" required>
-                </div>
+                <input class="btn btn-primary" type="submit" onclick="salvarTurma()" value="Salvar">
             </div>
-            <div class="col-3">
-                <ul class="list-group mt-2 p-1">
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <ul class="list-group mt-2 p-1" id="list-alunos-disponiveis">
                     <li class="list-group-item">
                         <strong>
-                            <p class="text-center m-0">Alunos</p>
+                            <p class="text-center m-0">Alunos disponíveis</p>
                         </strong>
-                    </li>
-                    <li class="list-group-item"> <!-- AJUDA -->
-                        <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                        <label class="form-check-label" for="firstCheckbox">Alunos</label>
                     </li>
                 </ul>
             </div>
-            <div class="d-flex mt-5 justify-content-end">
-                <input class="btn btn-primary" type="submit" value="Salvar">
+            <div class="col-2 text-center">
+                <button type="button" class="btn btn-default btn-lg" onclick="addAlunoNaTurma()">
+                    <span class="bi-arrow-right"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick="removeAlunoNaTurma()">
+                    <span class="bi-arrow-left"></span>
+                </button>
             </div>
-            <div class="d-flex justify-content-end container">
-                <a class="btn btn-primary mt-5" href="cadastro_aulas.html" role="button">Next</a>
+            <div class="col-5">
+                <ul class="list-group mt-2 p-1" id="list-alunos-turma">
+                    <li class="list-group-item">
+                        <strong>
+                            <p class="text-center m-0">Alunos da turma</p>
+                        </strong>
+                    </li>
+                </ul>
             </div>
+        </div>
+        <div class="row">
+            <br><br><br>
         </div>
     </section>
     <footer class="bg-primary fixed-bottom">
         <div class="container">
             <p class="text-center mt-3 text-light">© 2024 Company, Inc, By Puc Chek</p>
-        </div>
+        </div> 
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -124,14 +121,9 @@
         crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <script>
-        const data = document.getElementById('data').value;
-        const celulaData = novaLinha.insertCell(0);
-        celulaData.textContent = data;
-        botaoEditar.onclick = function () {
-            document.getElementById('data').value = data;
-        };
-    </script><!-- COLOCA SERPARADO -->
+    <script src="../../assets/json/disciplinas.js"></script>
+    <script src="../../assets/json/turmas.js"></script>
+    <script src="../../assets/js/cadastro_turmas.js"></script>
 </body>
 
 </html>
