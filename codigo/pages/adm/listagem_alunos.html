@@ -52,9 +52,6 @@
     </header>
     <div class="container mt-4">
         <h2 class="text-center p-3">Listagem de Alunos</h2>
-    
-        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addAlunoModal">Adicionar
-            Aluno</button>
         <table class="table" id="grid-alunos">
             <thead>
                 <tr>
@@ -70,37 +67,7 @@
             </tbody>
         </table>
     </div>
-    
-    <div class="modal fade" id="addAlunoModal" tabindex="-1" aria-labelledby="addAlunoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addAlunoModalLabel">Adicionar Aluno</h5>
-                </div>
-                <form id="form-add-aluno" onsubmit="createAluno()">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="nome-aluno">Nome:</label>
-                            <input type="text" class="form-control" id="nome-aluno" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="matricula-aluno">Matrícula:</label>
-                            <input type="text" class="form-control" id="matricula-aluno" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="senha-aluno">Senha:</label>
-                            <input type="password" class="form-control" id="senha-aluno" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Adicionar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    
+
     <div class="modal fade" id="editAlunoModal" tabindex="-1" aria-labelledby="editAlunoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">

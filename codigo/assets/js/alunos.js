@@ -1,24 +1,5 @@
-let db_alunos = {};
-
-function init() {
-    let alunosJSON = localStorage.getItem('db_alunos');
-
-    // Verifica se existem dados já armazenados no localStorage
-    if (!alunosJSON) {  // Se NÃO há dados no localStorage
-        
-        // Informa sobre localStorage vazio e e que serão carregados os dados iniciais
-        alert('Dados de alunos não encontrados no localStorage. \n -----> Fazendo carga inicial.');
-
-        // Copia os dados iniciais para o banco de dados 
-        db_alunos = dadosIniciaisAlunos;
-
-        // Salva os dados iniciais no local Storage convertendo-os para string antes
-        localStorage.setItem('db_alunos', JSON.stringify(dadosIniciaisAlunos));
-    }
-    else  {  // Se há dados no localStorage
-        // Converte a string JSON em objeto colocando no banco de dados baseado em JSON
-        db_alunos = JSON.parse(alunosJSON);
-    }
+if (!usuarioCorrente.matricula) {
+    window.location = '../../index.html';
 }
 
 function listaAlunos() {
@@ -31,7 +12,7 @@ function listaAlunos() {
         tableAlunos.innerHTML += `<tr><td>${aluno.id}</td>
                                         <td>${aluno.nome}</td>
                                         <td>${aluno.matricula}</td>
-                                        <td>${aluno.senha}</td>
+                                        <td>******</td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editAlunoModal" onclick="carregaDados(${aluno.id})">Editar</button>
                                             <button class="btn btn-danger btn-sm" onclick="deleteAluno(${aluno.id})">Excluir</button>
@@ -130,5 +111,3 @@ function deleteAluno(id){
     //Força o recarregamento da página para exibir a tabela atualizada
     window.location.reload();
 }
-
-init();
