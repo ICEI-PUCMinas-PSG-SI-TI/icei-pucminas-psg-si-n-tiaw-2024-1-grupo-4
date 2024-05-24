@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puc Chek - Cadastro</title>
+    <title>Puc Chek - Cadastro de Aulas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="../../assets/js/index.js"></script>
+    <script src="../../assets/json/turmas.js"></script>
+    <script src="../../assets/json/disciplinas.js"></script>
+    <script src="../../assets/js/aulas.js"></script>
 </head>
 
 <body>
@@ -41,8 +44,8 @@
                         <li class="nav-item">
                             <a class="nav-link active text-light" href="cadastro_aulas.html">Cadastro de Aula</a>
                         </li>
-                        <li class="nav-item" onclick="logoutUser()">
-                            <a class="nav-link active text-light" href="#">Sair <i
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" href="#" onclick="logoutUser()">Sair <i
                                     class="bi bi-box-arrow-right"></i></a>
                         </li>
                     </ul>
@@ -50,60 +53,73 @@
             </div>
         </nav>
     </header>
-    <section class="container">
-        <div class="row">
-            <p class="text-center h2 p-5">Cadastro de Aulas</p>
-            <div class="col-6">
-                <div class="input-group rounded border border-dark mt-1">
-                    <label for="data" class="input-group-text" id="basic-addon1">Data:</label>
-                    <input type="date" id="data" name="data" class="form-control" required>
-                </div>
-            </div>
-            <div class="col-6">
-                <select class="form-select rounded border border-dark m-1 p-2" aria-label="Default select example">
-                    <option selected>Materia</option>
-                    <option value="1">COMP101</option> <!-- Ficaria value="COMP101" sera? -->
-                    <option value="2">COMP301</option>
-                    <option value="3">COMP301</option>
-                    <option value="3">MATH101</option>
+
+    <main class="container mt-5">
+        <h2>Cadastro de Aula</h2>
+        <form id="classForm">
+            <div class="mb-3">
+                <label for="classGroup" class="form-label">Turma</label>
+                <select class="form-control" id="classGroup" required>
+                    <!-- Options will be populated by JavaScript -->
                 </select>
-                <div class="d-flex justify-content-end mt-5">
-                    <input class="btn btn-primary" type="submit" value="Salvar">
-                </div>
             </div>
-        </div>
-    </section>
-    <section>
-        <!-- <div class="d-flex justify-content-end container">
-            <a class="btn btn-primary mt-5" href="#" role="button">Next</a>
-        </div> ACHO Q NAO SERA NECESSARIO TER POIS A PROXIMA TELA SO SERIA DE LISTAGEM -->
-    </section>
-    </div>
-    </section>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Disciplina</label>
+                <select class="form-control" id="subject" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="dayOfWeek" class="form-label">Dia da Semana</label>
+                <select class="form-control" id="dayOfWeek" required>
+                    <option value="Segunda-feira">Segunda-feira</option>
+                    <option value="Terça-feira">Terça-feira</option>
+                    <option value="Quarta-feira">Quarta-feira</option>
+                    <option value="Quinta-feira">Quinta-feira</option>
+                    <option value="Sexta-feira">Sexta-feira</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="dataTermino" class="form-label">Data de Término</label>
+                <input type="date" class="form-control" id="dataTermino" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </main>
+
     <footer class="bg-primary fixed-bottom">
         <div class="container">
             <p class="text-center mt-3 text-light">© 2024 Company, Inc, By Puc Chek</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const turmas = dadosIniciaisTurmas.turmas;
+            const disciplinas = dadosIniciaisDisciplinas.disciplinas;
 
+            const turmaSelect = document.getElementById('classGroup');
+            const disciplinaSelect = document.getElementById('subject');
 
-        <script>
-            const data = document.getElementById('data').value;
-            const celulaData = novaLinha.insertCell(0);
-            celulaData.textContent = data;
-            botaoEditar.onclick = function () {
-                document.getElementById('data').value = data;
-            };
-        </script>
+            // Populate turmas select
+            turmas.forEach(turma => {
+                let option = document.createElement('option');
+                option.value = turma.id;
+                option.textContent = `Turma ${turma.id}`;
+                turmaSelect.appendChild(option);
+            });
+
+            // Populate disciplinas select
+            disciplinas.forEach(disciplina => {
+                let option = document.createElement('option');
+                option.value = disciplina.codigo;
+                option.textContent = disciplina.nome;
+                disciplinaSelect.appendChild(option);
+            });
+        });
+    </script>
 </body>
 
 </html>
