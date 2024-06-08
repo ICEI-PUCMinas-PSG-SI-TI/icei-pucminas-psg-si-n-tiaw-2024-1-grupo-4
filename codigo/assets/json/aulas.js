@@ -3,32 +3,37 @@ const dadosIniciaisAulas = {
         {
             id: 1,
             turma: 2,
-            disciplina: "COMP101",
-            data: "05/15/2024" 
+            data: "2024-05-15",
+            apurada: false,
+            alunosPresentes: []
         },
         {
             id: 2,
             turma: 1,
-            disciplina: "MATH101",
-            data: "05/17/2024"
+            data: "2024-05-17",
+            apurada: false,
+            alunosPresentes: []
         },
         {
             id: 3,
             turma: 3,
-            disciplina: "COMP301",
-            data: "05/13/2024"
+            data: "2024-05-13",
+            apurada: false,
+            alunosPresentes: []
         },
         {
             id: 4,
             turma: 2,
-            disciplina: "COMP201",
-            data: "05/14/2024"
+            data: "2024-05-14",
+            apurada: false,
+            alunosPresentes: []
         },
         {
             id: 5,
             turma: 3,
-            disciplina: "MATH101",
-            data: "05/16/2024"
+            data: "2024-05-16",
+            apurada: false,
+            alunosPresentes: []
         }
     ]
 };

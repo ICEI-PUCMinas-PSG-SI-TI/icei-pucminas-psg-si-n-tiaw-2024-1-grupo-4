@@ -96,6 +96,7 @@ function loginUser(event) {
     }
 
     if (usuarioValido) {
+        usuarioCorrente.id = usuarioValido.id;
         usuarioCorrente.matricula = usuarioValido.matricula;
         usuarioCorrente.nome = usuarioValido.nome;
         usuarioCorrente.perfil = perfil;

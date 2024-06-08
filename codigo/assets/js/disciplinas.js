@@ -13,7 +13,7 @@ function init() {
     if (!disciplinasJSON) {  // Se NÃO há dados no localStorage
         
         // Informa sobre localStorage vazio e e que serão carregados os dados iniciais
-        alert('Dados de disciplinas não encontrados no localStorage. \n -----> Fazendo carga inicial.');
+        //alert('Dados de disciplinas não encontrados no localStorage. \n -----> Fazendo carga inicial.');
 
         // Copia os dados iniciais para o banco de dados 
         db_disciplinas = dadosIniciaisDisciplinas;
