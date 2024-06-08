@@ -12,52 +12,58 @@ let db_professores = {};
 let usuarioCorrente = {};
 
 function initLoginApp() {
-    
     let adminsJSON = localStorage.getItem('db_admins');
     let alunosJSON = localStorage.getItem('db_alunos');
     let professoresJSON = localStorage.getItem('db_professores');
 
     if (!adminsJSON) { 
-        alert('Dados de admins não encontrados no localStorage. \n -----> Fazendo carga inicial.');
+        //alert('Dados de admins não encontrados no localStorage. \n -----> Fazendo carga inicial.');
         db_admins = dadosIniciaisAdm;
         localStorage.setItem('db_admins', JSON.stringify(dadosIniciaisAdm));
-    }
-    else  {
+    } else {
         db_admins = JSON.parse(adminsJSON);    
     }
 
     if (!alunosJSON) { 
-        alert('Dados de alunos não encontrados no localStorage. \n -----> Fazendo carga inicial.');
+        //alert('Dados de alunos não encontrados no localStorage. \n -----> Fazendo carga inicial.');
         db_alunos = dadosIniciaisAlunos;
         localStorage.setItem('db_alunos', JSON.stringify(dadosIniciaisAlunos));
-    }
-    else  {
+    } else {
         db_alunos = JSON.parse(alunosJSON);    
     }
 
     if (!professoresJSON) { 
-        alert('Dados de professores não encontrados no localStorage. \n -----> Fazendo carga inicial.');
+        //alert('Dados de professores não encontrados no localStorage. \n -----> Fazendo carga inicial.');
         db_professores = dadosIniciaisProfessores;
         localStorage.setItem('db_professores', JSON.stringify(dadosIniciaisProfessores));
-    }
-    else  {
+    } else {
         db_professores = JSON.parse(professoresJSON);    
     }
 
-    //Usuario logado
+    // Usuário logado
     let usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
     if (usuarioCorrenteJSON) {
         usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
     }
-};
+}
 
-function redirectIfLogged(){
+function redirectIfLogged() {
     let usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
     if (usuarioCorrenteJSON) {
         usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
 
-        if(usuarioCorrente.matricula !== undefined && usuarioCorrente.nome !== undefined){
-            window.location = '../codigo/pages/adm/cadastro_pessoas.html';
+        if (usuarioCorrente.matricula !== undefined && usuarioCorrente.nome !== undefined && usuarioCorrente.perfil !== undefined) {
+            switch (usuarioCorrente.perfil) {
+                case "1":
+                    window.location.href = '../codigo/pages/adm/cadastro_pessoas.html';
+                    break;
+                case "2":
+                    window.location.href = '../codigo/pages/professores/listagem_turmas.html';
+                    break;
+                case "3":
+                    window.location.href = '../codigo/pages/alunos/listagem_de_diciplina.html';
+                    break;
+            }
         }
     }
 }
@@ -70,36 +76,54 @@ function loginUser(event) {
     let senha = document.getElementById('senha').value;
     let perfil = document.getElementById('perfil').value;
     
-    if(perfil == "0") {
-        alert("Selecione o PERFIL")
+    if (perfil == "0") {
+        alert("Selecione o PERFIL");
         return false;
     }
 
-    if(perfil == "1") {
-        for (let i = 0; i < db_admins.admins.length; i++) {
-            let admin = db_admins.admins[i];
-            
-            if (matricula == admin.matricula && senha == admin.senha) {
-                usuarioCorrente.matricula = admin.matricula;
-                usuarioCorrente.nome = admin.nome;
-                
-                // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
-                sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
-                
-                window.location.href = '../codigo/pages/adm/cadastro_pessoas.html';
-                return true;
-            }
-        }
+    let usuarioValido = null;
+
+    switch (perfil) {
+        case "1": // Admin
+            usuarioValido = db_admins.admins.find(admin => admin.matricula === matricula && admin.senha === senha);
+            break;
+        case "2": // Professor
+            usuarioValido = db_professores.professores.find(professor => professor.matricula === matricula && professor.senha === senha);
+            break;
+        case "3": // Aluno
+            usuarioValido = db_alunos.alunos.find(aluno => aluno.matricula === matricula && aluno.senha === senha);
+            break;
     }
- 
-    alert("Usuário ou senha inválidos");
+
+    if (usuarioValido) {
+        usuarioCorrente.matricula = usuarioValido.matricula;
+        usuarioCorrente.nome = usuarioValido.nome;
+        usuarioCorrente.perfil = perfil;
+
+        // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
+
+        switch (perfil) {
+            case "1":
+                window.location.href = '../codigo/pages/adm/cadastro_pessoas.html';
+                break;
+            case "2":
+                window.location.href = '../codigo/pages/professores/listagem_turmas.html';
+                break;
+            case "3":
+                window.location.href = '../codigo/pages/alunos/listagem_de_diciplina.html';
+                break;
+        }
+    } else {
+        alert("Usuário ou senha inválidos");
+    }
 }
 
 // Apaga os dados do usuário corrente no sessionStorage
-function logoutUser () {
+function logoutUser() {
     usuarioCorrente = {};
-    sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente));
-    window.location = '../../index.html';
+    sessionStorage.removeItem('usuarioCorrente');
+    window.location.href = '../../index.html';
 }
 
 // Inicializa as estruturas utilizadas pelo LoginApp
