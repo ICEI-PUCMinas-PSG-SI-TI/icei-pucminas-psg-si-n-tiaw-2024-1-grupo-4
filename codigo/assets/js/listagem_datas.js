@@ -5,11 +5,13 @@ if (!usuarioCorrente.matricula) {
 }
 
 const diasDaSemana = [
+    "Domingo",
     "Segunda-feira",
     "Terça-feira",
     "Quarta-feira",
     "Quinta-feira",
-    "Sexta-feira"
+    "Sexta-feira",
+    "Sábado"
 ];
 
 function listarDatas() {
