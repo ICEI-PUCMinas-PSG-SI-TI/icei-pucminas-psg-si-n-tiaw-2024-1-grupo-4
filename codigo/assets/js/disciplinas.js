@@ -49,6 +49,11 @@ function adicionarDisciplina() {
     let codigo = document.getElementById('codigo-disciplina').value;
     let nome = document.getElementById('nome-disciplina').value;
 
+    if(codigo == "" || nome == ""){
+        alert("Codigo e nome da disciplina são obrigatórios!");
+        return false;
+    }
+
     let proximoId = db_disciplinas.disciplinas.length > 0 ? db_disciplinas.disciplinas[db_disciplinas.disciplinas.length - 1].id + 1 : 1;
 
     let disciplina = {

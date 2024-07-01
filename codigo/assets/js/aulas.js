@@ -2,7 +2,19 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     // Carregar aulas existentes do armazenamento local ou dados iniciais
-    let aulas = JSON.parse(localStorage.getItem('aulas')) || dadosIniciaisAulas.aulas;
+    let db_professores = JSON.parse(localStorage.getItem('db_professores'));
+    let db_turmas = JSON.parse(localStorage.getItem('db_turmas'));
+
+    let aulas;
+    let aulasJSON = localStorage.getItem('aulas');
+
+    if (!aulasJSON) { 
+        aulas = dadosIniciaisAulas.aulas;
+        localStorage.setItem('aulas', JSON.stringify(aulas));
+    }
+    else  {
+        aulas = JSON.parse(aulasJSON);
+    }
 
     // Imprimir todas as aulas existentes no console
     console.log("Aulas existentes:", aulas);
@@ -15,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const diaDaSemana = document.getElementById("dayOfWeek").value;
         const dataInicio = new Date(document.getElementById("dataInicio").value);
         const dataTermino = new Date(document.getElementById("dataTermino").value);
+        const horario = document.getElementById("horario").value;
 
         const diasDaSemana = {
             "Segunda-feira": 0,
@@ -27,16 +40,31 @@ document.addEventListener("DOMContentLoaded", function () {
         if(dataInicio < dataTermino){
             let proximaData = dataInicio;
             proximaData.setDate(dataInicio.getDate() + (7 + diasDaSemana[diaDaSemana] - dataInicio.getDay()) % 7);
-    
+            let professor = db_turmas.turmas.find(turmaAux => turmaAux.id == parseInt(turma)).professor;
+
             while (proximaData <= dataTermino) {
-                if(!aulas.find(aula => aula.turma === parseInt(turma) && aula.data === proximaData.toISOString().split('T')[0])){
+                if(!aulas.find(aula => aula.turma === parseInt(turma) && aula.data === proximaData.toISOString().split('T')[0] && aula.horario == parseInt(horario))){
+                    for(let i=0; i<aulas.length; i++) {
+                        let turmaAux = db_turmas.turmas.find(turmaAux => turmaAux.id == aulas[i].turma);
+                        if(turmaAux && turmaAux.professor == professor){
+                            if(aulas[i].data == proximaData.toISOString().split('T')[0] && aulas[i].horario == parseInt(horario)) {
+                                alert("Esse professor já possui aulas no mesmo dia e horário em outra turma!");
+                                return false;
+                            }
+                        }
+                    }
+
                     aulas.push({
                         id: aulas.length + 1,
                         turma: parseInt(turma),
                         data: proximaData.toISOString().split('T')[0],
                         apurada: false,
-                        alunosPresentes: []
+                        alunosPresentes: [],
+                        horario: parseInt(horario)
                     });
+                } else {
+                    alert("Já existe aulas para a turma nas datas e horarios selecionados!");
+                    return false;
                 }
                 proximaData.setDate(proximaData.getDate() + 7);
             }
